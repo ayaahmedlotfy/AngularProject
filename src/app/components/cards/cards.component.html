@@ -1,0 +1,44 @@
+  <!-- Listing Items -->
+  <div class="container">
+    <app-side class="filters"></app-side>
+    <!-- Items -->
+    <section class="item-listing">
+        <!-- tools (sorting , change view , exporting) -->
+        <div class="item-listing__tools">
+            <select class="form-control" name="" id="">
+                <option value="1">Featured</option>
+                <option value="2">Price low to high</option>
+                <option value="3">Price high to low</option>
+                <option value="4">Name</option>
+            </select>
+            <a class="action-btn" routerLink="product/add">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
+        <!-- items -->
+        <!-- made ng classes to change it -->
+        <div class="item-listing__items" [ngClass]="{'item-listing--3items' : productArr.length>2}">
+            <!-- medium item -->
+            <app-items  class="item-medium-1"  *ngFor="let prod of productArr| paginate:{ itemsPerPage: 9, currentPage: p} " [productItem]="prod" ></app-items>
+            <pagination-controls
+            (pageChange)="p = $event"
+            class="float-right d-block">
+            </pagination-controls>
+
+           <!-- <app-items class="item-medium-1"></app-items> -->
+        </div>
+
+
+    </section>
+</div>
+
+<!-- ngSwitch -->
+<div [ngSwitch]="number">
+  <p *ngSwitchCase="1">we are happy for hearing that</p>
+  <p *ngSwitchCase="2">we are sad for hearing that</p>
+  <p *ngSwitchDefault>ok we wil improve it</p>
+</div>
+<!-- ngClass -->
+<div [ngClass]="['first', 'second']">thank you dear for cheking our website</div>
+<!-- ngStyle -->
+<div [ngStyle]="{'max-width.px': 100}">copy rights</div>
